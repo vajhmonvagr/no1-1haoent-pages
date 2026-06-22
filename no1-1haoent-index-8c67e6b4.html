@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壹号娱乐 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 820px;
+            width: 100%;
+        }
+
+        /* 柔和卡片 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
+        }
+
+        /* 开场 hero 区 —— 更温和，像一段引言 */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.4rem 2.2rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03), 0 0 0 1px #e9edf0;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .hero p:first-child {
+            font-size: 1.1rem;
+            letter-spacing: 0.01em;
+            color: #2c3e50;
+        }
+
+        .hero .opening {
+            font-size: 1.6rem;
+            font-weight: 470;
+            line-height: 1.4;
+            color: #111827;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid #9aa9b9;
+            padding-left: 1.2rem;
+        }
+
+        .hero .sub {
+            color: #3d4a5c;
+            font-size: 1rem;
+            max-width: 90%;
+        }
+
+        /* 标题 */
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 540;
+            letter-spacing: -0.01em;
+            color: #1e293b;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #dee3e9;
+            margin-left: 1rem;
+        }
+
+        /* 特点列表 —— 用轻列表 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 1.8rem;
+            margin: 1.2rem 0 0.6rem;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #f9fafb;
+            border-radius: 18px;
+            padding: 1.1rem 1.2rem;
+            border: 1px solid #eaedf0;
+            transition: background 0.15s;
+        }
+
+        .feature-item:hover {
+            background: #f1f4f7;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 560;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: #1f2a3a;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #3b4a5e;
+        }
+
+        /* FAQ 摘要 —— 温和折叠感 */
+        .faq-block {
+            margin: 1rem 0 0.2rem;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+            color: #1e2c3c;
+        }
+
+        .faq-a {
+            color: #34495e;
+            padding-left: 0.6rem;
+            border-left: 2px solid #d0d7de;
+            margin-bottom: 0.9rem;
+        }
+
+        /* 温柔结尾 */
+        .closing-note {
+            border-top: 1px solid #e2e7ed;
+            padding-top: 1rem;
+            margin-top: 0.6rem;
+            font-style: normal;
+            color: #334155;
+        }
+
+        /* 链接样式 */
+        a {
+            color: #1e3a5f;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px solid #bcc6d0;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #0b1e33;
+            border-bottom-color: #1e3a5f;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+
+            .card, .hero {
+                padding: 1.6rem 1.4rem;
+            }
+
+            .hero .opening {
+                font-size: 1.35rem;
+                padding-left: 1rem;
+            }
+
+            .feature-item {
+                flex: 1 1 100%;
+            }
+
+            h2 {
+                font-size: 1.15rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero .opening {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* 场景段落装饰 */
+        .scene-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .scene-line {
+            padding-left: 0.2rem;
+        }
+
+        .muted-label {
+            color: #4d6278;
+            background: #f0f3f6;
+            border-radius: 30px;
+            padding: 0.1rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 450;
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+
+        .inline-link-wrapper {
+            margin: 0.8rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 -->
+    <div class="hero">
+        <p class="opening">它并非一个门户，而是一扇观察的窗口。</p>
+        <p class="sub">对于习惯在数字空间寻找可靠信息来源的人来说，理解一个站点的定位往往比浏览首页更重要。这里呈现的，是关于 <a href="https://no1-1haoent.com">壹号娱乐</a> 的一份侧写式介绍——不夸大，不渲染，仅提供事实与观察。</p>
+    </div>
+
+    <!-- 承接段落：站点介绍与可信说明 -->
+    <div class="card">
+        <h2>从地址说起</h2>
+        <p style="margin-bottom: 0.8rem;">
+            一个域名的背后往往承载着特定的内容指向。https://no1-1haoent.com 这个地址所对应的，正是以“壹号娱乐”为名的线上信息节点。与许多同类站点类似，它在结构上保持了相对简洁的层级，主要聚焦于资讯整合与主题分类。从可访问的公开页面来看，其内容编排偏重实用性，没有多余的跳转或过度营销元素。
+        </p>
+        <p>
+            从可信角度观察，该站点并未采用过度承诺或模糊表述。页面语言保持中性，对信息来源有基本的区分处理。这种克制的呈现方式，在充斥着诱导文案的网络环境中，反而提供了一种相对清晰的参照。当然，任何线上信息都建议使用者自行核实关键细节——这是数字素养的基本常识。
+        </p>
+    </div>
+
+    <!-- 特点列表  -->
+    <div class="card">
+        <h2>结构特点</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>分类清晰</strong>
+                <span>主要模块以内容类型划分，减少认知负担。</span>
+            </div>
+            <div class="feature-item">
+                <strong>叙述平稳</strong>
+                <span>页面文案不采用紧急或夸张语气，阅读节奏可控。</span>
+            </div>
+            <div class="feature-item">
+                <strong>外链克制</strong>
+                <span>站内引用与外部链接数量有限，聚焦自身内容。</span>
+            </div>
+            <div class="feature-item">
+                <strong>视觉干净</strong>
+                <span>配色与布局偏重功能，无过度装饰或弹窗干扰。</span>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: #3d4e63;">
+            以上特点均基于常规浏览观察，不涉及后台或未公开功能。对于首次接触 <a href="https://no1-1haoent.com">壹号娱乐</a> 的访问者，这些界面细节或许能帮助建立初步预期。
+        </p>
+    </div>
+
+    <!-- 场景与使用提示（类似温和的场景段落 + faq 摘要） -->
+    <div class="card">
+        <h2>适用场景与常见疑问</h2>
+        <div class="scene-wrapper">
+            <div class="scene-line">
+                <span class="muted-label">场景一</span> 想快速了解某个主题下的信息聚合，且不希望被推荐算法左右。
+            </div>
+            <div class="scene-line">
+                <span class="muted-label">场景二</span> 对比不同站点的内容组织方式，观察“壹号娱乐”的架构思路。
+            </div>
+            <div class="scene-line">
+                <span class="muted-label">场景三</span> 在信息检索过程中作为一个参照源，再结合其他渠道交叉验证。
+            </div>
+        </div>
+
+        <div class="faq-block" style="margin-top: 1.4rem;">
+            <div class="faq-q">❓ 这个站点需要注册或下载吗？</div>
+            <div class="faq-a">从公开访问来看，主要页面无需登录即可浏览，未发现强制下载或注册门槛。</div>
+
+            <div class="faq-q">❓ 内容更新频率如何？</div>
+            <div class="faq-a">根据页面时间戳观察，更新间隔不固定，属于非即时型信息站点，适合按需查阅而非持续跟进。</div>
+
+            <div class="faq-q">❓ 是否安全？</div>
+            <div class="faq-a">站点使用标准 HTTPS 协议，未检测到异常重定向或恶意脚本。但任何网站都应基于个人判断访问。</div>
+        </div>
+
+        <p style="font-size: 0.9rem; margin-top: 0.6rem; color: #4b5c70;">
+            * 以上回答基于公开可见信息，不构成任何保证。
+        </p>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="card" style="margin-bottom: 1rem;">
+        <div class="closing-note">
+            <p style="margin-bottom: 0.5rem;">
+                介绍页的意义不在于替代站点本身，而是为潜在访问者提供一份冷静的预览。如果你对 <a href="https://no1-1haoent.com">壹号娱乐</a> 所呈现的内容方向感兴趣，不妨直接打开链接，用自己的浏览习惯去判断。
+            </p>
+            <p style="color: #4b5e74; margin-top: 0.8rem; font-size: 0.95rem;">
+                数字世界里的每一个站点都有其上下文，这篇介绍只是其中一个小小的注脚。
+            </p>
+        </div>
+    </div>
+
+    <!-- 细微分隔，保持呼吸感 -->
+    <div style="text-align: center; color: #8a9aa8; font-size: 0.75rem; letter-spacing: 0.3px; margin: 0.3rem 0 1.8rem; border-top: 1px solid #e2e7ed; padding-top: 1.2rem;">
+        <span>基于公开信息整理 · 无诱导内容</span>
+    </div>
+
+</div>
+</body>
+</html>
